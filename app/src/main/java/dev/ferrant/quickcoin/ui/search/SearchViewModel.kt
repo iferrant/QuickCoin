@@ -41,7 +41,7 @@ class SearchViewModel @Inject constructor(
         )
     }
 
-    fun search(query: String = "a") {
+    fun search(query: String = "") {
         produceEvent(SearchViewEvent.OnSearch(query))
     }
 
