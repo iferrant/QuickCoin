@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">QuickCoin</string>
+
+    <!-- Search -->
+    <string name="add_coin">Add coin</string>
+    <string name="search_placeholder">Find your favourite coin</string>
+
 </resources>
