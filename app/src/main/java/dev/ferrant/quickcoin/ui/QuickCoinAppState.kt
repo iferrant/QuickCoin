@@ -1,4 +1,4 @@
-package dev.ferrant.quickcoin.ui.search
+package dev.ferrant.quickcoin.ui
 
 import android.content.Context
 import androidx.compose.runtime.Composable
