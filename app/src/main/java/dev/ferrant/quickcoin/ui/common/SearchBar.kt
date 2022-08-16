@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.ferrant.quickcoin.R
 import dev.ferrant.quickcoin.ui.theme.QuickCoinTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar(
     modifier: Modifier = Modifier,

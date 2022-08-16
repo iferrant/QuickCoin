@@ -4,11 +4,11 @@ import dev.ferrant.quickcoin.data.remote.model.Coin as RemoteCoin
 
 data class Coin(
     val id: String,
-    val large: String?,
-    val marketCapRank: Int?,
+    val large: String? = null,
+    val marketCapRank: Int? = null,
     val name: String,
     val symbol: String,
-    val thumb: String?,
+    val thumb: String? = null,
 )
 
 fun RemoteCoin.toCoin(): Coin =
