@@ -16,6 +16,11 @@ abstract class BaseViewModel<VE : ViewEvent, VS : ViewState> : ViewModel() {
     private val _viewStateFlow = MutableStateFlow(initialState)
     val state: StateFlow<VS>
         get() = _viewStateFlow
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5000),
+                initialValue = initialState
+            )
 
     abstract fun createInitialState(): VS
 
@@ -24,13 +29,11 @@ abstract class BaseViewModel<VE : ViewEvent, VS : ViewState> : ViewModel() {
     fun produceEvent(event: VE) = viewModelScope.launch { viewEventFlow.emit(event) }
 
     init {
-        viewModelScope.launch {
-            viewEventFlow
-                .flatMapLatest { handleEvent(it) }
-                .scan(initialState) { viewState, change -> change.reduce(viewState) }
-                .onEach { setState(it) }
-                .launchIn(viewModelScope)
-        }
+        viewEventFlow
+            .flatMapLatest { handleEvent(it) }
+            .scan(initialState) { viewState, change -> change.reduce(viewState) }
+            .onEach { setState(it) }
+            .launchIn(viewModelScope)
     }
 
     private fun setState(state: VS) {
