@@ -80,10 +80,7 @@ fun SearchCoin(
                 ),
         ) {
 
-            SearchBar(
-                modifier = Modifier
-                    .fillMaxWidth(),
-            ) { onSearch(it) }
+            SearchBar(modifier = Modifier.fillMaxWidth()) { onSearch(it) }
 
             when (state) {
                 is CoinListState.Success -> CoinList(coins = state.coinList)

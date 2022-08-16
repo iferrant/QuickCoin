@@ -36,9 +36,8 @@ class SearchViewModel @Inject constructor(
 
     override fun createInitialState(): SearchViewState = SearchViewState()
 
-    override fun handleEvent(event: SearchViewEvent): Flow<StateReducer<SearchViewState>> {
-        val searchFlow = flowOf(event)
-            .filterIsInstance<SearchViewEvent.OnSearch>()
+    override fun Flow<SearchViewEvent>.handleEvent(): Flow<StateReducer<SearchViewState>> {
+        val searchFlow = filterIsInstance<SearchViewEvent.OnSearch>()
             .debounce(300)
             .distinctUntilChanged()
             .flatMapConcat {

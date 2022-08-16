@@ -24,13 +24,13 @@ abstract class BaseViewModel<VE : ViewEvent, VS : ViewState> : ViewModel() {
 
     abstract fun createInitialState(): VS
 
-    abstract fun handleEvent(event: VE): Flow<StateReducer<VS>>
+    abstract fun Flow<VE>.handleEvent(): Flow<StateReducer<VS>>
 
     fun produceEvent(event: VE) = viewModelScope.launch { viewEventFlow.emit(event) }
 
     init {
         viewEventFlow
-            .flatMapLatest { handleEvent(it) }
+            .handleEvent()
             .scan(initialState) { viewState, change -> change.reduce(viewState) }
             .onEach { setState(it) }
             .launchIn(viewModelScope)
