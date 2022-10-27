@@ -1,6 +1,6 @@
 package dev.ferrant.quickcoin.domain.userCases
 
-import dev.ferrant.quickcoin.data.SearchRepository
+import dev.ferrant.core.data.repository.SearchRepository
 import dev.ferrant.quickcoin.data.remote.ResponseResult
 import dev.ferrant.quickcoin.domain.Response
 import dev.ferrant.quickcoin.domain.model.Coin
@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SearchCoinsUseCase @Inject constructor(
-    private val searchRepository: SearchRepository,
+    private val searchRepository: dev.ferrant.core.data.repository.SearchRepository,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
 

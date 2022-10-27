@@ -3,15 +3,14 @@ package dev.ferrant.quickcoin.di
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.ferrant.quickcoin.BuildConfig
-import dev.ferrant.quickcoin.data.remote.api.ApiHelper
+import dev.ferrant.core.network.ApiHelper
 import dev.ferrant.quickcoin.data.remote.api.ApiHelperImpl
-import dev.ferrant.quickcoin.data.remote.api.CoinGeckoService
+import dev.ferrant.core.network.retrofit.CoinGeckoService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -79,9 +78,10 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): CoinGeckoService = retrofit.create(CoinGeckoService::class.java)
+    fun provideApiService(retrofit: Retrofit): dev.ferrant.core.network.retrofit.CoinGeckoService = retrofit.create(
+        dev.ferrant.core.network.retrofit.CoinGeckoService::class.java)
 
     @Provides
     @Singleton
-    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
+    fun provideApiHelper(apiHelper: ApiHelperImpl): dev.ferrant.core.network.ApiHelper = apiHelper
 }

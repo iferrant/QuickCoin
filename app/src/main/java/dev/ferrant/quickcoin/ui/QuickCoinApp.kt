@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import dev.ferrant.quickcoin.ui.search.Search
+import dev.ferrant.feature_search.Search
 import dev.ferrant.quickcoin.ui.theme.QuickCoinTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -33,7 +33,7 @@ fun QuickCoinApp(
                 modifier = Modifier.padding(padding)
             ) {
                 composable(Screen.Search.route) {
-                    Search(viewModel = hiltViewModel())
+                    dev.ferrant.feature_search.Search(viewModel = hiltViewModel())
                 }
             }
 

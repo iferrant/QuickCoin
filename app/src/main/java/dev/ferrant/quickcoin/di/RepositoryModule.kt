@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.ferrant.quickcoin.data.SearchRepository
-import dev.ferrant.quickcoin.data.SearchRepositoryImpl
+import dev.ferrant.core.data.repository.SearchRepository
+import dev.ferrant.core.data.repository.SearchRepositoryImpl
 import dev.ferrant.quickcoin.domain.userCases.SearchCoinsUseCase
 import javax.inject.Singleton
 
@@ -16,12 +16,12 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideSearchRepository(searchRepository: SearchRepositoryImpl): SearchRepository =
+    fun provideSearchRepository(searchRepository: dev.ferrant.core.data.repository.SearchRepositoryImpl): dev.ferrant.core.data.repository.SearchRepository =
         searchRepository
 
     @Provides
     @Singleton
-    fun provideSearchCoinsUseCase(searchRepository: SearchRepository): SearchCoinsUseCase =
+    fun provideSearchCoinsUseCase(searchRepository: dev.ferrant.core.data.repository.SearchRepository): SearchCoinsUseCase =
         SearchCoinsUseCase(searchRepository)
 
 }

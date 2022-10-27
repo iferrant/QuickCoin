@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.williamhill.feature_search'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 33
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(":core-arch")
+    implementation project(":core-model")
+    implementation project(":core-ui")
+
+    // Compose
+    implementation('androidx.compose.foundation:foundation:1.2.1') {
+        because 'Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)'
+    }
+    implementation 'androidx.compose.material3:material3:1.0.0-beta03'
+    implementation 'androidx.compose.ui:ui:1.2.1'
+    implementation('androidx.compose.ui:ui-tooling:1.2.1') {
+        because 'Tooling support (Previews, etc.)'
+    }
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
+
+    // Coil
+    implementation("io.coil-kt:coil:2.1.0") {
+        because 'Image loading using compose'
+    }
+    implementation("io.coil-kt:coil-compose:2.1.0")
+}

@@ -17,9 +17,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        // Coin Gecko API URL
-        buildConfigField("String", "BASE_URL", "\"https://api.coingecko.com/api/v3/\"")
     }
 
     buildTypes {
@@ -52,7 +49,7 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.5.2"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha01"
-        // Compose
+    // Compose
     implementation 'androidx.activity:activity-compose:1.5.1'
     implementation('androidx.compose.foundation:foundation:1.2.1') {
         because 'Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)'
@@ -69,11 +66,6 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
 
-    // Coil
-    implementation("io.coil-kt:coil:2.1.0") {
-        because 'Image loading using compose'
-    }
-    implementation("io.coil-kt:coil-compose:2.1.0")
 
     // Google
     implementation "com.google.android.material:material:1.6.1"
